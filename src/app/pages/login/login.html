@@ -1,0 +1,62 @@
+<div class="min-h-[80vh] flex items-center justify-center bg-gray-50 px-4">
+  <div class="bg-white rounded-2xl shadow-xl w-full max-w-md p-8 sm:p-10">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Welcome Back</h2>
+      <p class="text-gray-500 text-sm">Please enter your details to login.</p>
+    </div>
+
+    <form nz-form [formGroup]="userForm" (ngSubmit)="submitForm()">
+      <nz-form-item class="mb-5">
+        <nz-form-control nzErrorTip="Email không đúng định dạng">
+          <input
+            type="email"
+            nz-input
+            formControlName="email"
+            placeholder="Email Address"
+            autocomplete="username"
+            class="bg-gray-50 focus:bg-white transition-colors"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item class="mb-6">
+        <nz-form-control nzErrorTip="Mật khẩu phải đủ 6 kí tự!">
+          <input
+            type="password"
+            nz-input
+            formControlName="password"
+            placeholder="Password"
+            autocomplete="current-password"
+            class="bg-gray-50 focus:bg-white transition-colors"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <div class="flex items-center justify-between mb-8">
+        <label nz-checkbox>
+          <span class="text-gray-600 text-sm">Remember me</span>
+        </label>
+        <a href="#" class="text-sm font-semibold text-black hover:text-gray-600 transition-colors">
+          Forgot password?
+        </a>
+      </div>
+
+      <button
+        nz-button
+        nzType="primary"
+        nzBlock
+        nzSize="large"
+        class="!h-12 !rounded-full !bg-black !border-black hover:!bg-gray-800 transition-colors text-base font-bold shadow-md"
+      >
+        Login
+      </button>
+
+      <div class="mt-8 text-center text-sm text-gray-500">
+        Already have an account?
+        <a routerLink="/register" class="text-black font-bold hover:underline transition-all">
+          Register now
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

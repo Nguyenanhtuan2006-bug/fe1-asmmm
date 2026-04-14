@@ -1,0 +1,172 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "Tuan2006@gmail.com",
+      "password": "Tuan2006",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "email": "khachhang@gmail.com",
+      "password": "password123",
+      "role": "user"
+    },
+    {
+      "email": "khachhang@gmail.com",
+      "password": "password123",
+      "id": "r2E7bC1IZcQ"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "T-Shirts"
+    },
+    {
+      "id": "2",
+      "name": "Jeans"
+    },
+    {
+      "id": "3",
+      "name": "Shirts"
+    },
+    {
+      "id": "4",
+      "name": "Shorts"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "T-shirt with Tape Details",
+      "image": "images/Home1.png",
+      "images": [
+        "https://picsum.photos/200/300?random=1",
+        "https://picsum.photos/200/300?random=2",
+        "https://picsum.photos/200/300?random=3"
+      ],
+      "price": 120,
+      "rating": 4.5,
+      "description": "Meticulously crafted garments...",
+      "categoryId": "1"
+    },
+    {
+      "name": "Skinny Fit Jeans",
+      "image": "images/Home2.png",
+      "images": [
+        "https://picsum.photos/200/300?random=1",
+        "https://picsum.photos/200/300?random=2",
+        "https://picsum.photos/200/300?random=3"
+      ],
+      "price": 240,
+      "description": "High quality jeans...",
+      "categoryId": "HzaoySyElxQ",
+      "id": "2"
+    },
+    {
+      "id": "3",
+      "name": "Checkered Shirt",
+      "image": "images/Home3.png",
+      "images": [
+        "https://picsum.photos/200/300?random=1",
+        "https://picsum.photos/200/300?random=2",
+        "https://picsum.photos/200/300?random=3"
+      ],
+      "price": 180,
+      "rating": 4.5,
+      "description": "Classic checkered shirt...",
+      "categoryId": "1"
+    },
+    {
+      "id": "4",
+      "name": "Sleeve Striped T-shirt",
+      "image": "images/Home4.png",
+      "images": [
+        "https://picsum.photos/200/300?random=1",
+        "https://picsum.photos/200/300?random=2",
+        "https://picsum.photos/200/300?random=3"
+      ],
+      "price": 130,
+      "oldPrice": 160,
+      "discount": 30,
+      "rating": 4.5,
+      "description": "Striped t-shirt design...",
+      "categoryId": "1"
+    },
+    {
+      "id": "5",
+      "name": "Vertical Striped Shirt",
+      "image": "images/Home5.png",
+      "images": [
+        "https://picsum.photos/200/300?random=1",
+        "https://picsum.photos/200/300?random=2",
+        "https://picsum.photos/200/300?random=3"
+      ],
+      "price": 212,
+      "oldPrice": 232,
+      "discount": 20,
+      "rating": 5,
+      "description": "Elegant vertical striped...",
+      "categoryId": "1"
+    },
+    {
+      "id": "6",
+      "name": "COURAGE GRAPHIC T-SHIRT",
+      "image": "images/Home6.png",
+      "images": [
+        "https://picsum.photos/200/300?random=1",
+        "https://picsum.photos/200/300?random=2",
+        "https://picsum.photos/200/300?random=3"
+      ],
+      "price": 145,
+      "rating": 4,
+      "description": "Bold graphic t-shirt...",
+      "categoryId": "1"
+    },
+    {
+      "id": "7",
+      "name": "LOOSE FIT BERMUDA SHORTS",
+      "image": "images/Home7.png",
+      "images": [
+        "https://picsum.photos/200/300?random=1",
+        "https://picsum.photos/200/300?random=2",
+        "https://picsum.photos/200/300?random=3"
+      ],
+      "price": 80,
+      "rating": 3,
+      "description": "Comfortable summer shorts...",
+      "categoryId": "HzaoySyElxQ"
+    },
+    {
+      "name": "Áo Thun ",
+      "image": "https://i.pinimg.com/1200x/c5/f0/9b/c5f09b3f6bfa0a1ff95c411b46878b54.jpg",
+      "images": [
+        "https://picsum.photos/200/300?random=1",
+        "https://picsum.photos/200/300?random=2",
+        "https://picsum.photos/200/300?random=3"
+      ],
+      "price": 120,
+      "description": "Áo đẹp vì người ",
+      "categoryId": "1",
+      "id": "usacF5vzYJ4"
+    }
+  ],
+  "carts": [
+    {
+      "id": "1",
+      "userId": "2",
+      "productId": "p1",
+      "name": "Áo Thun",
+      "quantity": 1
+    },
+    {
+      "id": "2",
+      "userId": "1",
+      "productId": "p3",
+      "name": "Quần Jeans",
+      "quantity": 2
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

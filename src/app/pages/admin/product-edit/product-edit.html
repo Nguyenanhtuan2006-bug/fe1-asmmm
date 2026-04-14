@@ -1,0 +1,81 @@
+<div class="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md border border-gray-200">
+  <h2 class="text-2xl font-bold text-black mb-6">Cập Nhật Sản Phẩm</h2>
+
+  <form [formGroup]="productForm" (ngSubmit)="handleSubmit()" class="space-y-4">
+    <div>
+      <label class="block text-gray-700 font-medium mb-2"
+        >Tên sản phẩm <span class="text-red-500">*</span></label
+      >
+      <input
+        type="text"
+        formControlName="name"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black outline-none"
+      />
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <label class="block text-gray-700 font-medium mb-2"
+          >Giá tiền ($) <span class="text-red-500">*</span></label
+        >
+        <input
+          type="number"
+          formControlName="price"
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black outline-none"
+        />
+      </div>
+
+      <div>
+        <label class="block text-gray-700 font-medium mb-2"
+          >Thuộc Danh mục <span class="text-red-500">*</span></label
+        >
+        <select
+          formControlName="categoryId"
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black outline-none"
+        >
+          <option value="" disabled>-- Chọn danh mục --</option>
+          @for (cat of categories; track cat.id) {
+            <option [value]="cat.id">{{ cat.name }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div>
+      <label class="block text-gray-700 font-medium mb-2"
+        >Đường dẫn Ảnh (URL) <span class="text-red-500">*</span></label
+      >
+      <input
+        type="text"
+        formControlName="image"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black outline-none"
+      />
+    </div>
+
+    <div>
+      <label class="block text-gray-700 font-medium mb-2">Mô tả chi tiết</label>
+      <textarea
+        formControlName="description"
+        rows="3"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black outline-none"
+      ></textarea>
+    </div>
+
+    <div class="flex justify-end gap-4 mt-6">
+      <button
+        type="button"
+        routerLink="/admin/product-list"
+        class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50"
+      >
+        Hủy
+      </button>
+      <button
+        type="submit"
+        [disabled]="productForm.invalid"
+        class="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 disabled:bg-gray-400"
+      >
+        Cập nhật
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,72 @@
+<div
+  class="bg-black text-white text-center text-[12px] md:text-sm py-2.5 px-4 relative flex items-center justify-center"
+>
+  <p>
+    Sign up and get 20% off to your first order.
+    <a routerLink="/" class="underline font-medium ml-1 hover:text-gray-300">Sign Up Now</a>
+  </p>
+  <button class="absolute right-4 hidden md:block hover:text-gray-300">✕</button>
+</div>
+
+<header class="bg-white sticky top-0 z-50 border-b border-gray-200">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 py-4">
+    <div class="flex items-center gap-4">
+      <button
+        class="md:hidden text-2xl cursor-pointer hover:text-gray-600"
+        routerLink="/filters"
+        routerLinkActive="font-bold text-black"
+      >
+        ☰
+      </button>
+      <h1 routerLink="/" class="text-2xl md:text-3xl font-black tracking-tighter cursor-pointer">
+        SHOP.CO
+      </h1>
+    </div>
+
+    <nav class="hidden md:flex items-center gap-6 lg:gap-8 text-base font-medium">
+      <a
+        routerLink="/admin/category-list"
+        routerLinkActive="text-black"
+        class="flex items-center gap-1 cursor-pointer text-gray-600 hover:text-black transition"
+      >
+        Shop <i class="fas fa-chevron-down text-xs"></i>
+      </a>
+      <a
+        routerLink="/admin/product-list"
+        routerLinkActive="text-black"
+        class="text-gray-600 hover:text-black transition cursor-pointer"
+      >
+        On Sale
+      </a>
+      <a routerLink="/details" class="text-gray-600 hover:text-black transition cursor-pointer"
+        >New Arrivals</a
+      >
+      <a routerLink="/category" class="text-gray-600 hover:text-black transition cursor-pointer"
+        >Brands</a
+      >
+    </nav>
+
+    <div class="flex items-center gap-4 md:gap-5">
+      <button class="md:hidden text-xl cursor-pointer hover:scale-110 transition">🔍</button>
+
+      <div class="hidden md:flex items-center bg-[#F0EEED] rounded-full px-4 py-2.5 w-64 lg:w-96">
+        <span class="text-gray-500 mr-2 text-sm">🔍</span>
+        <form action="/search" class="w-full">
+          <input
+            name="keywords"
+            type="text"
+            placeholder="Search for products..."
+            class="bg-transparent border-none outline-none text-sm w-full text-black placeholder-gray-500"
+          />
+        </form>
+      </div>
+
+      <button routerLink="/cart" class="text-xl cursor-pointer hover:scale-110 transition">
+        🛒
+      </button>
+      <button routerLink="/login" class="text-xl cursor-pointer hover:scale-110 transition">
+        👤
+      </button>
+    </div>
+  </div>
+</header>

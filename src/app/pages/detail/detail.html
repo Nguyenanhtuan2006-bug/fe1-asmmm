@@ -1,0 +1,360 @@
+@if (product) {
+  <main class="max-w-7xl mx-auto px-4 py-10">
+    <nav class="text-gray-500 text-sm mb-6">
+      Home > Shop > Men > <span class="text-black">{{ product.category || 'T-shirts' }}</span>
+    </nav>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div class="flex gap-4">
+        <div class="flex flex-col gap-4 w-24">
+          @if (product.images?.length) {
+            @for (img of product.images; track img) {
+              <img
+                [src]="img"
+                alt="thumbnail"
+                class="border-2 rounded-xl cursor-pointer hover:opacity-80 transition-all"
+                [class.border-black]="mainImage === img"
+                [class.border-transparent]="mainImage !== img"
+                (click)="changeMainImage(img)"
+              />
+            }
+          } @else {
+            <img
+              src="images/pro1.png"
+              alt="thumbnail"
+              class="border-2 border-transparent rounded-xl cursor-pointer"
+              (click)="changeMainImage('images/pro1.png')"
+            />
+            <img
+              src="images/pro2.png"
+              alt="thumbnail"
+              class="border-2 border-transparent rounded-xl cursor-pointer"
+              (click)="changeMainImage('images/pro2.png')"
+            />
+            <img
+              src="images/pro3.png"
+              alt="thumbnail"
+              class="border-2 border-transparent rounded-xl cursor-pointer"
+              (click)="changeMainImage('images/pro3.png')"
+            />
+          }
+        </div>
+
+        <div class="flex-1">
+          <img
+            [src]="mainImage"
+            class="w-full rounded-3xl bg-[#F0EEED] object-cover"
+            alt="Main Product Image"
+          />
+        </div>
+      </div>
+
+      <div>
+        <h1 class="text-4xl font-black uppercase mb-2">
+          {{ product.name || 'One Life Graphic T-shirt' }}
+        </h1>
+
+        <div class="flex items-center gap-2 mb-4">
+          <div class="text-yellow-400 text-sm">★★★★☆</div>
+          <span class="text-gray-500">{{ product.rating || '4.5' }}/5</span>
+        </div>
+
+        <div class="flex items-center gap-4 mb-6">
+          <span class="text-3xl font-bold">${{ product.price || 260 }}</span>
+
+          @if (product.oldPrice) {
+            <span class="text-3xl text-gray-400 line-through">${{ product.oldPrice }}</span>
+          }
+
+          @if (product.discount) {
+            <span class="bg-red-100 text-red-500 px-3 py-1 rounded-full text-sm font-bold">
+              -{{ product.discount }}%
+            </span>
+          }
+        </div>
+
+        <p class="text-gray-500 mb-8">
+          {{
+            product.description ||
+              'This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.'
+          }}
+        </p>
+
+        <hr class="mb-6" />
+
+        <div class="mb-6">
+          <p class="text-gray-500 mb-3">Select Colors</p>
+          <div class="flex gap-3">
+            <button
+              class="w-10 h-10 rounded-full bg-[#4F4631] border-2 border-black flex items-center justify-center text-white"
+            >
+              <i class="fas fa-check text-xs"></i>
+            </button>
+            <button class="w-10 h-10 rounded-full bg-[#314F4A]"></button>
+            <button class="w-10 h-10 rounded-full bg-[#31344F]"></button>
+          </div>
+        </div>
+
+        <div class="mb-8">
+          <p class="text-gray-500 mb-3">Choose Size</p>
+          <div class="flex gap-3">
+            <button
+              class="px-6 py-3 bg-gray-100 rounded-full hover:bg-black hover:text-white transition"
+            >
+              Small
+            </button>
+            <button
+              class="px-6 py-3 bg-gray-100 rounded-full hover:bg-black hover:text-white transition"
+            >
+              Medium
+            </button>
+            <button class="px-6 py-3 bg-black text-white rounded-full">Large</button>
+            <button
+              class="px-6 py-3 bg-gray-100 rounded-full hover:bg-black hover:text-white transition"
+            >
+              X-large
+            </button>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex items-center bg-gray-100 rounded-full px-6 py-4 gap-6">
+            <button class="text-xl" (click)="decrement()">-</button>
+            <span class="font-bold">{{ quantity }}</span>
+            <button class="text-xl" (click)="increment()">+</button>
+          </div>
+          <button
+            class="flex-1 bg-black text-white rounded-full font-bold hover:bg-gray-800 transition"
+            (click)="addToCart()"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <section class="max-w-7xl mx-auto px-4 py-10 mt-10 border-t">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+        <div class="flex items-center gap-2">
+          <h3 class="text-xl md:text-2xl font-bold">All Reviews</h3>
+          <span class="text-gray-500 text-sm font-normal">(451)</span>
+        </div>
+        <div class="flex items-center gap-2 ml-auto">
+          <button
+            class="px-5 py-3 bg-black text-white rounded-full font-medium text-sm hover:bg-gray-800 transition"
+          >
+            Write a Review
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="border border-gray-200 rounded-[20px] p-6 md:p-8 relative">
+          <button class="absolute top-6 right-6 text-gray-400">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="5" cy="12" r="2"></circle>
+              <circle cx="12" cy="12" r="2"></circle>
+              <circle cx="19" cy="12" r="2"></circle>
+            </svg>
+          </button>
+          <div class="flex text-yellow-400 text-lg mb-3">★★★★★</div>
+          <div class="flex items-center gap-2 mb-3">
+            <h4 class="font-bold text-lg">Samantha D.</h4>
+            <div
+              class="w-4 h-4 bg-emerald-500 rounded-full flex items-center justify-center text-[8px] text-white"
+            >
+              ✓
+            </div>
+          </div>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            "I absolutely love this t-shirt! The design is unique and the fabric feels so
+            comfortable. As a fellow designer, I appreciate the attention to detail. It's become my
+            favorite go-to shirt."
+          </p>
+          <p class="text-gray-400 text-sm font-medium mt-6">Posted on August 14, 2023</p>
+        </div>
+
+        <div class="border border-gray-200 rounded-[20px] p-6 md:p-8 relative">
+          <button class="absolute top-6 right-6 text-gray-400">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="5" cy="12" r="2"></circle>
+              <circle cx="12" cy="12" r="2"></circle>
+              <circle cx="19" cy="12" r="2"></circle>
+            </svg>
+          </button>
+          <div class="flex text-yellow-400 text-lg mb-3">★★★★★</div>
+          <div class="flex items-center gap-2 mb-3">
+            <h4 class="font-bold text-lg">Alex M.</h4>
+            <div
+              class="w-4 h-4 bg-emerald-500 rounded-full flex items-center justify-center text-[8px] text-white"
+            >
+              ✓
+            </div>
+          </div>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            "The t-shirt exceeded my expectations! The colors are vibrant and the print quality is
+            top-notch. Being a UI/UX designer myself, I'm quite picky about aesthetics, and this
+            t-shirt definitely gets a thumbs up from me."
+          </p>
+          <p class="text-gray-400 text-sm font-medium mt-6">Posted on August 15, 2023</p>
+        </div>
+
+        <div class="border border-gray-200 rounded-[20px] p-6 md:p-8 relative">
+          <button class="absolute top-6 right-6 text-gray-400">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="5" cy="12" r="2"></circle>
+              <circle cx="12" cy="12" r="2"></circle>
+              <circle cx="19" cy="12" r="2"></circle>
+            </svg>
+          </button>
+          <div class="flex text-yellow-400 text-lg mb-3">★★★★★</div>
+          <div class="flex items-center gap-2 mb-3">
+            <h4 class="font-bold text-lg">Ethan R.</h4>
+            <div
+              class="w-4 h-4 bg-emerald-500 rounded-full flex items-center justify-center text-[8px] text-white"
+            >
+              ✓
+            </div>
+          </div>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            "This t-shirt is a must-have for anyone who appreciates good design. The minimalistic
+            yet stylish pattern caught my eye, and the fit is perfect. I can see the designer's
+            touch in every aspect of this shirt."
+          </p>
+          <p class="text-gray-400 text-sm font-medium mt-6">Posted on August 16, 2023</p>
+        </div>
+
+        <div class="border border-gray-200 rounded-[20px] p-6 md:p-8 relative">
+          <button class="absolute top-6 right-6 text-gray-400">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="5" cy="12" r="2"></circle>
+              <circle cx="12" cy="12" r="2"></circle>
+              <circle cx="19" cy="12" r="2"></circle>
+            </svg>
+          </button>
+          <div class="flex text-yellow-400 text-lg mb-3">★★★★★</div>
+          <div class="flex items-center gap-2 mb-3">
+            <h4 class="font-bold text-lg">Olivia P.</h4>
+            <div
+              class="w-4 h-4 bg-emerald-500 rounded-full flex items-center justify-center text-[8px] text-white"
+            >
+              ✓
+            </div>
+          </div>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            "As a UI/UX enthusiast, I value simplicity and functionality. This t-shirt not only
+            represents these principles but also feels great to wear. It's evident that the designer
+            poured their creativity into making this t-shirt stand out."
+          </p>
+          <p class="text-gray-400 text-sm font-medium mt-6">Posted on August 16, 2023</p>
+        </div>
+      </div>
+
+      <div class="flex justify-center mt-12">
+        <button
+          class="px-10 py-3 border border-gray-200 rounded-full font-medium hover:bg-black hover:text-white transition duration-300"
+        >
+          Load More Reviews
+        </button>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 py-10">
+      <h2
+        class="text-3xl md:text-4xl font-black text-center mb-8 uppercase tracking-wide text-black"
+      >
+        You might also like
+      </h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        <div class="flex flex-col space-y-3">
+          <div class="bg-[#F0EEED] rounded-2xl aspect-square flex items-center justify-center p-4">
+            <img
+              src="images/pro5.png"
+              alt="Polo with Contrast Trims"
+              class="w-full h-full object-contain"
+            />
+          </div>
+          <h4 class="font-bold text-sm sm:text-base text-gray-900 truncate">
+            Polo with Contrast Trims
+          </h4>
+          <div class="flex text-yellow-400 text-sm items-center gap-1">
+            ★★★★ <span class="text-gray-300">★</span>
+            <span class="text-gray-500 text-xs ml-1">4.0/5</span>
+          </div>
+          <div class="flex gap-2 items-center font-bold">
+            <span class="text-xl text-gray-900">$212</span>
+            <span class="text-gray-400 line-through font-medium text-base">$242</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col space-y-3">
+          <div class="bg-[#F0EEED] rounded-2xl aspect-square flex items-center justify-center p-4">
+            <img
+              src="images/pro6.png"
+              alt="Gradient Graphic T-shirt"
+              class="w-full h-full object-contain"
+            />
+          </div>
+          <h4 class="font-bold text-sm sm:text-base text-gray-900 truncate">
+            Gradient Graphic T-shirt
+          </h4>
+          <div class="flex text-yellow-400 text-sm items-center gap-1">
+            ★★★★ <span class="text-gray-300">★</span>
+            <span class="text-gray-500 text-xs ml-1">4.0/5</span>
+          </div>
+          <div class="flex gap-2 items-center font-bold">
+            <span class="text-xl text-gray-900">$145</span>
+            <span class="text-gray-400 line-through font-medium text-base">$160</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col space-y-3">
+          <div class="bg-[#F0EEED] rounded-2xl aspect-square flex items-center justify-center p-4">
+            <img
+              src="images/pro7.png"
+              alt="Polo with Tipping Details"
+              class="w-full h-full object-contain"
+            />
+          </div>
+          <h4 class="font-bold text-sm sm:text-base text-gray-900 truncate">
+            Polo with Tipping Details
+          </h4>
+          <div class="flex text-yellow-400 text-sm items-center gap-1">
+            ★★★★ <span class="text-gray-300">★</span>
+            <span class="text-gray-500 text-xs ml-1">4.0/5</span>
+          </div>
+          <div class="flex gap-2 items-center font-bold">
+            <span class="text-xl text-gray-900">$180</span>
+            <span class="text-gray-400 line-through font-medium text-base">$200</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col space-y-3">
+          <div class="bg-[#F0EEED] rounded-2xl aspect-square flex items-center justify-center p-4">
+            <img
+              src="images/pro8.png"
+              alt="Black Striped T-shirt"
+              class="w-full h-full object-contain"
+            />
+          </div>
+          <h4 class="font-bold text-sm sm:text-base text-gray-900 truncate">
+            Black Striped T-shirt
+          </h4>
+          <div class="flex text-yellow-400 text-sm items-center gap-1">
+            ★★★★ <span class="text-gray-300">★</span>
+            <span class="text-gray-500 text-xs ml-1">4.0/5</span>
+          </div>
+          <div class="flex gap-2 items-center font-bold">
+            <span class="text-xl text-gray-900">$120</span>
+            <span class="text-gray-400 line-through font-medium text-base">$150</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+} @else {
+  <div class="flex justify-center items-center h-[60vh]">
+    <div class="text-xl font-medium text-gray-500">Loading product details...</div>
+  </div>
+}

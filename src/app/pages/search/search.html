@@ -1,0 +1,50 @@
+<main class="max-w-7xl mx-auto px-4 py-10 mt-10">
+  <h1 class="text-2xl md:text-3xl font-bold mb-8">
+    Kết quả tìm kiếm cho: <span class="text-gray-500">"{{ keywords }}"</span>
+  </h1>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+    
+    @for (item of products; track item.id) {
+      <div class="flex flex-col space-y-3 cursor-pointer group" [routerLink]="['/home', item.id]">
+        <div class="bg-[#F0EEED] rounded-2xl aspect-square flex items-center justify-center p-4 overflow-hidden relative">
+          <img
+            [src]="item.image"
+            [alt]="item.name"
+            class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        
+        <h4 class="font-bold text-sm sm:text-base text-gray-900 truncate">
+          {{ item.name }}
+        </h4>
+        
+        <div class="flex text-yellow-400 text-sm items-center gap-1">
+          ★★★★ <span class="text-gray-300">★</span>
+          <span class="text-gray-500 text-xs ml-1">4.5/5</span>
+        </div>
+        
+        <div class="flex gap-2 items-center font-bold">
+          <span class="text-xl text-gray-900">${{ item.price }}</span>
+          
+          @if (item.originalPrice) {
+            <span class="text-gray-400 line-through font-medium text-base">${{ item.originalPrice }}</span>
+          }
+        </div>
+      </div>
+
+    } @empty {
+      <div class="col-span-full flex flex-col items-center justify-center py-20">
+        <svg class="w-20 h-20 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <h2 class="text-xl font-bold text-gray-500 mb-2">Không tìm thấy sản phẩm!</h2>
+        <p class="text-gray-400 mb-6">Xin lỗi, chúng tôi không tìm thấy kết quả nào cho "{{ keywords }}".</p>
+        <button routerLink="/" class="px-8 py-3 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition">
+          Trở về Trang chủ
+        </button>
+      </div>
+    }
+
+  </div>
+</main>

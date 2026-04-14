@@ -1,0 +1,35 @@
+<div class="max-w-xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md border border-gray-200">
+  <h2 class="text-2xl font-bold text-black mb-6">Cập Nhật Danh Mục</h2>
+
+  <form [formGroup]="categoryForm" (ngSubmit)="handleSumit()" class="space-y-4">
+    <div>
+      <label class="block text-gray-700 font-medium mb-2">Tên danh mục</label>
+      <input
+        type="text"
+        formControlName="name"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-black outline-none"
+      />
+
+      @if (categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched) {
+        <span class="text-red-500 text-sm mt-1">Tên danh mục không được để trống!</span>
+      }
+    </div>
+
+    <div class="flex justify-end gap-4 mt-6">
+      <button
+        type="button"
+        (click)="router.navigate(['admin/category-list'])"
+        class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50"
+      >
+        Hủy
+      </button>
+      <button
+        type="submit"
+        [disabled]="categoryForm.invalid"
+        class="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 disabled:bg-gray-400"
+      >
+        Cập nhật
+      </button>
+    </div>
+  </form>
+</div>
